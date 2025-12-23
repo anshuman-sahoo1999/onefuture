@@ -1,6 +1,5 @@
 backend:
-  name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  name: test-repo
 
 # Uncomment below to enable local development
 # local_backend: true
@@ -76,3 +75,4 @@ collections:
               - {label: "Twitter/X", name: "twitter", widget: "string", required: false}
               - {label: "YouTube", name: "youtube", widget: "string", required: false}
           - {label: "Footer Text", name: "footerText", widget: "text"}
+
