@@ -1,11 +1,12 @@
 backend:
-  name: test-repo
+  name: github
+  repo: anshuman-sahoo1999/onefuture
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
-# Uncomment below to enable local development
-# local_backend: true
-
-media_folder: "images/cms" # Media files will be stored in the repo under images/cms
-public_folder: "/images/cms" # The src attribute for uploaded media will begin with /images/cms
+media_folder: "OFF Final Website - Copy/images/cms"
+public_folder: "/images/cms"
 
 collections:
   # Advisors Collection
@@ -75,4 +76,5 @@ collections:
               - {label: "Twitter/X", name: "twitter", widget: "string", required: false}
               - {label: "YouTube", name: "youtube", widget: "string", required: false}
           - {label: "Footer Text", name: "footerText", widget: "text"}
+
 
