@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Downloads - One Future Foundation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/official logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/official logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            scroll-padding-top: 200px; /* Account for fixed header when scrolling to anchors */
+        }
+        
+        /* Additional spacing for section headers */
+        section[id] {
+            padding-top: 2.5rem;
+        }
+        
+        /* Bootstrap Navbar Overrides - Force visibility */
+        .navbar {
+            backdrop-filter: blur(10px) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1030 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+        }
+        
+        .navbar-nav {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+        }
+        
+        .navbar-collapse {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .nav-item {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            white-space: nowrap !important;
+            margin: 0 0.25rem !important;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #374151 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            font-size: 0.9rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #1e40af !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile-specific navbar fixes */
+        @media (max-width: 991.98px) {
+            .navbar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                z-index: 1030 !important;
+            }
+            
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98) !important;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+            
+            .navbar-nav {
+                padding: 1rem 0;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0 !important;
+            }
+            
+            /* Ensure dropdowns work on mobile */
+            .dropdown-menu {
+                position: static !important;
+                float: none !important;
+                width: auto !important;
+                margin-top: 0 !important;
+                background-color: transparent !important;
+                border: 0 !important;
+                box-shadow: none !important;
+                padding-left: 1rem !important;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 1rem !important;
+                color: #374151 !important;
+            }
+            
+            /* Force Bootstrap collapse to work */
+            .navbar-collapse.collapse {
+                display: none !important;
+            }
+            
+            .navbar-collapse.collapsing {
+                height: auto !important;
+                overflow: visible !important;
+                transition: none !important;
+            }
+            
+            .navbar-collapse.collapse.show {
+                display: block !important;
+            }
+            
+            /* Ensure proper Bootstrap behavior */
+            .navbar-collapse:not(.show) {
+                display: none !important;
+            }
+            
+            .navbar-collapse.show {
+                display: block !important;
+            }
+        }
+
+        /* Additional mobile optimizations */
+        @media (max-width: 767.98px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .small-header {
+                padding: 0.5rem 0;
+            }
+            
+            .small-header .navbar-brand img {
+                max-height: 40px;
+            }
+            
+            .downloads-table th,
+            .downloads-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .download-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .table-responsive {
+                border-radius: 8px;
+                margin: 0 10px;
+            }
+            
+            .search-section {
+                margin: 1rem 0;
+            }
+            
+            .search-section .input-group {
+                margin-bottom: 1rem;
+            }
+            
+            /* Touch-friendly improvements */
+            .download-btn:active {
+                transform: scale(0.95);
+            }
+            
+            /* Better mobile table handling */
+            .downloads-table {
+                font-size: 0.875rem;
+            }
+            
+            .downloads-table th {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .downloads-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .downloads-table th,
+            .downloads-table td {
+                padding: 0.5rem 0.25rem;
+                font-size: 0.8rem;
+            }
+            
+            .download-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+            
+            .small-header .navbar-brand img {
+                max-height: 35px;
+            }
+            
+            .visitor-counter-section {
+                padding: 15px;
+            }
+            
+            .counter-number {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Dropdown styles */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f3f4f6;
+            color: #1e40af;
+        }
+        
+        /* Small Header Styles */
+        .small-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1031;
+            font-size: 0.875rem;
+        }
+        
+        .small-header a:hover {
+            opacity: 0.8;
+        }
+        
+        .small-header .dropdown-menu {
+            font-size: 0.875rem;
+        }
+        
+        /* Adjust main content padding to account for fixed headers */
+        body {
+            padding-top: 104px;
+        }
+        
+        /* Downloads table styles */
+        .downloads-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .downloads-table th {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+        }
+        
+        .downloads-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
+        }
+        
+        .downloads-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            color: white;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Footer Styles */
+        .social-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .social-icon-circle:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .social-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .visitor-counter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .counter-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .counter-label {
+            color: #93c5fd;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .counter-number {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+        
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .footer-map-container iframe {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-map-container iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* File Type Badges */
+        .file-type-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .badge-pdf {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-doc {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .badge-xls {
+            background-color: #198754;
+            color: white;
+        }
+        
+        .badge-ppt {
+            background-color: #fd7e14;
+            color: white;
+        }
+        
+        .badge-other {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* File Icon Styling */
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        /* Table Styling */
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .table td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Card Styling */
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        .card-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #6b7280;
+        }
+        
+        .breadcrumb-item a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-item.active {
+            color: #6b7280;
+        }
+
+        /* Animated dropdowns */
+        .dropdown-menu {
+            opacity: 0;
+            transform: scale(0.98);
+            transform-origin: top;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        .show > .dropdown-menu, .dropdown-menu.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Staggered mobile drawer animation */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                transform: translateY(-10px);
+                opacity: 0;
+                transition: transform 0.25s ease, opacity 0.25s ease;
+            }
+            .navbar-collapse.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .navbar-collapse.show .nav-item {
+                animation: fadeSlideIn 0.35s ease both;
+            }
+            .navbar-collapse.show .nav-item:nth-child(1) { animation-delay: 0.02s; }
+            .navbar-collapse.show .nav-item:nth-child(2) { animation-delay: 0.05s; }
+            .navbar-collapse.show .nav-item:nth-child(3) { animation-delay: 0.08s; }
+            .navbar-collapse.show .nav-item:nth-child(4) { animation-delay: 0.11s; }
+            .navbar-collapse.show .nav-item:nth-child(5) { animation-delay: 0.14s; }
+            .navbar-collapse.show .nav-item:nth-child(6) { animation-delay: 0.17s; }
+            .navbar-collapse.show .nav-item:nth-child(7) { animation-delay: 0.20s; }
+            .navbar-collapse.show .nav-item:nth-child(8) { animation-delay: 0.23s; }
+        }
+        
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide old navbar */
+        .navbar { display: none !important; }
+
+        /* New Navbar Styles */
+        .new-navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1040; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e5e7eb; }
+        .new-navbar .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+        .new-navbar .brand img { height: 56px; width: auto; object-fit: contain; }
+        .new-navbar .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+        .new-navbar .nav-toggle .bar { display: block; width: 24px; height: 2px; background: #1f2937; margin: 5px 0; transition: transform 0.2s ease, opacity 0.2s ease; }
+        .new-navbar .nav-menu { display: flex; }
+        .new-navbar .nav-links { display: flex; list-style: none; margin: 0; padding: 0; gap: 8px; align-items: center; }
+        .new-navbar .nav-item { position: relative; }
+        .new-navbar .nav-link, .new-navbar .submenu-toggle { color: #1f2937; text-decoration: none; font-weight: 500; padding: 10px 12px; border-radius: 8px; display: inline-flex; align-items: center; }
+        .new-navbar .nav-link:hover, .new-navbar .submenu-toggle:hover { background: #f3f4f6; }
+        .new-navbar .has-submenu > .submenu-toggle { background: transparent; border: 0; cursor: pointer; }
+        .new-navbar .submenu { position: absolute; top: calc(100% + 8px); left: 0; min-width: 200px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 8px; display: none; opacity: 0; transform: translateY(-6px); transition: opacity 0.18s ease, transform 0.18s ease; }
+        .new-navbar .submenu a { display: block; padding: 8px 10px; color: #374151; border-radius: 6px; text-decoration: none; }
+        .new-navbar .submenu a:hover { background: #f9fafb; color: #1e40af; }
+        .new-navbar .nav-item.open > .submenu { display: block; opacity: 1; transform: translateY(0); }
+        
+        /* Mobile */
+        @media (max-width: 991.98px) {
+            body { padding-top: 96px !important; }
+            .new-navbar .nav-toggle { display: inline-block; }
+            .new-navbar .nav-menu { position: fixed; top: 96px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transform: translateY(-16px); opacity: 0; pointer-events: none; transition: transform 0.25s ease, opacity 0.25s ease; }
+            .new-navbar .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+            .new-navbar .nav-links { flex-direction: column; align-items: stretch; gap: 4px; padding: 10px; }
+            .new-navbar .nav-link, .new-navbar .submenu-toggle { padding: 12px 14px; }
+            .new-navbar .submenu { position: static; border: 0; box-shadow: none; padding: 4px 0 8px; transform: none; opacity: 1; display: none; }
+            .new-navbar .nav-item.open > .submenu { display: block; }
+        }
+        .new-navbar .nav-link.active { background: #e5efff; color: #1e40af; }
+        .nav-open { overflow: hidden; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- New Navbar -->
+    <header class="new-navbar" role="banner">
+        <div class="nav-container container">
+            <a class="brand d-flex align-items-center" href="index.html">
+                <img src="./images/official logo.png" alt="One Future Foundation Logo">
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav id="navMenu" class="nav-menu" role="navigation">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
+                        <ul class="submenu">
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#vision">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#approach" class="nav-link">Our Approach</a></li>
+                    <li class="nav-item"><a href="index.html#impact" class="nav-link">Impact Areas</a></li>
+                    <li class="nav-item"><a href="index.html#blueprint" class="nav-link">Blueprint</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Media</button>
+                        <ul class="submenu">
+                            <li><a href="downloads.html">Downloads</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Get Involved</button>
+                        <ul class="submenu">
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="partner.html">Partner</a></li>
+                            <li><a href="internship.html">Internship</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Media</a></li>
+                        <li class="breadcrumb-item active">Downloads</li>
+                    </ol>
+                </nav>
+                
+                <div class="text-center">
+                    <h1 class="display-5 fw-bold text-blue-800 mb-3">Downloads</h1>
+                    <p class="lead text-gray-600 max-w-2xl mx-auto">Access our latest reports, publications, and resources to learn more about our work and impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="py-5">
+            <div class="container">
+                <!-- Search and Filter -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Search documents...">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-filter text-muted"></i>
+                            </span>
+                            <select class="form-select border-start-0" id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="Brochures">Brochures</option>
+                                <option value="Flyers">Flyers</option>
+                                <option value="Newsletters">Newsletters</option>
+                                <option value="Reports">Reports</option>
+                                <option value="White Papers">White Papers</option>
+                                <option value="Journals">Journals</option>
+                                <option value="Magazines">Magazines</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents Table -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-file-alt me-2"></i>
+                            Documents & Publications
+                        </h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Document</th>
+                                        <th>Category</th>
+                                        <th>File Type</th>
+                                        <th>Size</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="documentsTableBody">
+                                    <tr>
+                                        <td colspan="6" class="text-center py-5">
+                                            <div class="text-muted">
+                                                <i class="fas fa-file-alt fa-3x mb-3"></i>
+                                                <h5>No documents available</h5>
+                                                <p>Documents and publications will be added here when available.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="card-footer bg-light">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-muted">
+                                    <span id="paginationInfo">Showing 0 to 0 of 0 entries</span>
+                                </div>
+                                <nav aria-label="Downloads pagination">
+                                    <ul class="pagination pagination-sm mb-0" id="pagination">
+                                        <!-- Pagination items will be inserted here by JavaScript -->
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">One Future Foundation</h3>
+                                            <p class="mb-3">Empowering communities through innovative approaches in climate action, clean energy, WASH & sustainable development for a brighter tomorrow.</p>
+                    
+                    <!-- Visitor Counter -->
+                    <div class="visitor-counter-section">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Website Visitors</h4>
+                        <div class="counter-display">
+                            <span class="counter-label">Total Visitors:</span>
+                            <span id="visitorCount" class="counter-number">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white hover:text-blue-200">Home</a></li>
+                        <li class="mb-2"><a href="index.html#about" class="text-white hover:text-blue-200">About Us</a></li>
+                        <li class="mb-2"><a href="index.html#impact" class="text-white hover:text-blue-200">Impact Areas</a></li>
+                        <li class="mb-2"><a href="index.html#blueprint" class="text-white hover:text-blue-200">Blueprint</a></li>
+                                                    <li class="mb-2"><a href="volunteer.html" class="text-white hover:text-blue-200">Get Involved</a></li>
+                        <li><a href="#footer" class="text-white hover:text-blue-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Google Map Location - Middle Column -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-lg font-semibold mb-3 text-white">Our Location</h4>
+                    <div class="footer-map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.820145165585!2d85.80516117341034!3d20.349047410780475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1908e025984c55%3A0xee1fcd1f11e55141!2sDLF%20Cyber%20City!5e0!3m2!1sen!2sin!4v1754549308918!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="One Future Foundation - DLF Cybercity, Bhubaneswar">
+                        </iframe>
+                    </div>
+                    <p class="text-blue-200 text-sm mt-2">DLF Cybercity, Bhubaneswar, Odisha</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-xl font-semibold mb-3">Contact Information</h3>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Address</h4>
+                                <p class="text-blue-200 text-sm">DCB 118, 1st Floor, DLF Cybercity<br>Patia, Bhubaneswar 751024<br>Odisha, India</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                <h4 class="font-semibold text-white text-sm">Email</h4>
+                                <p class="text-blue-200 text-sm">info@onefuture.in</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    <h3 class="text-lg font-semibold mb-2 text-white">Connect With Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                                    </svg>
+                                </a>
+                        <a href="#" class="social-icon-circle">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                        </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-blue-700">
+            
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-grow-1">
+                    <p class="mb-0">
+                        <i class="far fa-copyright me-1"></i> 2025. One Future Foundation. All Rights Reserved.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white hover:text-blue-200 me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-blue-200" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        // Pagination variables
+        window.currentPage = 1;
+        window.itemsPerPage = 10;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Downloads page loaded');
+            setupEventListeners();
+            
+            // Ensure filter function is available
+            if (!window.filterDownloads) {
+                console.log('Filter function not available, creating fallback');
+                window.filterDownloads = function() {
+                    console.log('Fallback filter function called');
+                };
+            }
+            
+            // Test Bootstrap functionality
+            console.log('Testing Bootstrap functionality...');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            if (navbarToggler && navbarCollapse) {
+                console.log('Navbar elements found');
+                navbarToggler.addEventListener('click', function() {
+                    console.log('Navbar toggler clicked');
+                    navbarCollapse.classList.toggle('show');
+                });
+            } else {
+                console.log('Navbar elements not found');
+            }
+        });
+
+        // Simple download function
+        function downloadFile(fileUrl, fileName, fileType) {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = fileName + '.' + fileType.toLowerCase();
+            link.style.display = 'none';
+            
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert('Download started for: ' + fileName);
+        }
+
+
+
+        // Get file type CSS class
+        function getFileTypeClass(fileType) {
+            const type = fileType.toLowerCase();
+            if (type === 'pdf') return 'badge-pdf';
+            if (type === 'doc' || type === 'docx') return 'badge-doc';
+            if (type === 'xls' || type === 'xlsx') return 'badge-xls';
+            if (type === 'ppt' || type === 'pptx') return 'badge-ppt';
+            return 'badge-other';
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredDownloads.length / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="goToPage(${currentPage - 1})">Previous</a>
+                </li>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
+                        </li>
+                    `;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            // Next button
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="goToPage(${currentPage + 1})">Next</a>
+                </li>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // Go to specific page
+        function goToPage(page) {
+            if (page < 1 || page > Math.ceil(filteredDownloads.length / itemsPerPage)) return;
+            currentPage = page;
+            displayDocuments(filteredDownloads);
+            updatePagination();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', window.filterDownloads);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', window.filterDownloads);
+            }
+        }
+
+        // Filter downloads - Make this globally accessible
+        window.filterDownloads = function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            if (!searchInput || !categoryFilter) return;
+            
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            
+            if (!window.allDownloads) {
+                console.log('No downloads data available yet');
+                return;
+            }
+            
+            console.log('Filtering with search:', searchTerm, 'category:', selectedCategory);
+            console.log('Total downloads:', window.allDownloads.length);
+            
+            window.filteredDownloads = window.allDownloads.filter(item => {
+                const title = (item.title || '').toLowerCase();
+                const description = (item.description || '').toLowerCase();
+                const category = (item.category || '');
+                
+                const matchesSearch = searchTerm === '' || 
+                                    title.includes(searchTerm) || 
+                                    description.includes(searchTerm);
+                
+                const matchesCategory = selectedCategory === '' || category === selectedCategory;
+                
+                console.log('Item:', item.title, 'Search match:', matchesSearch, 'Category match:', matchesCategory);
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            console.log('Filtered results:', window.filteredDownloads.length);
+            
+            // Reset to page 1 when filtering
+            window.currentPage = 1;
+            displayDocumentsFromAPI(window.filteredDownloads);
+        };
+
+        // Hide loading state
+        function hideLoadingState() {
+            const loadingState = document.getElementById('loadingState');
+            if (loadingState) {
+                loadingState.style.display = 'none';
+            }
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            const loadingState = document.getElementById('loadingState');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (loadingState) loadingState.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'block';
+        }
+
+        // Download file function
+        function downloadFile(fileUrl, fileName, fileType) {
+            // Check if it's a Google Drive link
+            if (fileUrl.includes('drive.google.com')) {
+                // For Google Drive links, open in new tab
+                window.open(fileUrl, '_blank');
+            } else {
+                // For other URLs, try to download
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.download = `${fileName}.${fileType.toLowerCase()}`;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+        
+        // Visitor Counter Function
+        function updateVisitorCount() {
+            // Get current count from localStorage
+            let count = localStorage.getItem('visitorCount');
+            
+            if (count === null) {
+                // First time visit, start from 3594
+                count = 3594;
+            } else {
+                // Increment existing count
+                count = parseInt(count) + 1;
+            }
+            
+            // Store updated count
+            localStorage.setItem('visitorCount', count);
+            
+            // Display count
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.textContent = count;
+            }
+        }
+        
+        // Initialize visitor counter
+        updateVisitorCount();
+    </script>
+    <script>
+    (function(){
+        var API = 'https://script.google.com/macros/s/AKfycbwK7FIbpTECuxg1bwyymxBIWzbQ_Bz0lM5gFdXiWjzFo8icYOvZrhK5HezQv2kbndUn/exec';
+
+        window.docsCB = function(resp){
+            console.log('API Response received:', resp);
+            var tbody = document.getElementById('documentsTableBody');
+            if (!tbody) {
+                console.log('Table body not found');
+                return;
+            }
+            if (!resp || !resp.ok || !resp.items || !resp.items.length) {
+                console.log('No valid data in response:', resp);
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4">No documents available</td></tr>';
+                return;
+            }
+            
+            console.log('Found', resp.items.length, 'documents');
+            
+            // Store all downloads for filtering
+            window.allDownloads = resp.items;
+            window.filteredDownloads = resp.items;
+            
+            // Apply any existing filters
+            if (window.filterDownloads) {
+                window.filterDownloads();
+            }
+        };
+        
+        window.displayDocumentsFromAPI = function(documents) {
+            var tbody = document.getElementById('documentsTableBody');
+            if (!documents || !documents.length) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4">No documents available</td></tr>';
+                updatePaginationInfo(0, 0, 0);
+                updatePagination(0);
+                return;
+            }
+            
+            // Calculate pagination
+            var totalItems = documents.length;
+            var totalPages = Math.ceil(totalItems / window.itemsPerPage);
+            var startIndex = (window.currentPage - 1) * window.itemsPerPage;
+            var endIndex = Math.min(startIndex + window.itemsPerPage, totalItems);
+            
+            // Get items for current page
+            var pageItems = documents.slice(startIndex, endIndex);
+            
+            tbody.innerHTML = pageItems.map(function(d){
+                var fileTypeClass = (String(d.fileType||'').toLowerCase()==='pdf') ? 'badge-pdf' : 'badge-other';
+                var date = d.date || '';
+                
+                // Format date to show only YYYY-MM-DD (preserve original date)
+                var formattedDate = '';
+                if (date) {
+                    try {
+                        // If it's already in YYYY-MM-DD format, use it directly
+                        if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                            formattedDate = date;
+                        } else {
+                            // For other date formats, parse and format carefully
+                            var dateObj = new Date(date);
+                            if (!isNaN(dateObj.getTime())) {
+                                // Use local date components to avoid timezone issues
+                                var year = dateObj.getFullYear();
+                                var month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                                var day = String(dateObj.getDate()).padStart(2, '0');
+                                formattedDate = year + '-' + month + '-' + day;
+                            } else {
+                                formattedDate = date; // Keep original if parsing fails
+                            }
+                        }
+                    } catch (e) {
+                        formattedDate = date; // Keep original if error
+                    }
+                }
+                
+                return '<tr>'
+                    + '<td><div class="d-flex align-items-center"><div class="file-icon me-3"><i class="fas fa-file-pdf text-danger fs-4"></i></div><div><h6 class="mb-1">'
+                    + esc(d.title||'') + '</h6><p class="text-muted mb-0 small">' + esc(d.description||'') + '</p></div></div></td>'
+                    + '<td><span class="badge bg-secondary">' + esc(d.category||'') + '</span></td>'
+                    + '<td><span class="file-type-badge ' + fileTypeClass + '">' + esc(d.fileType||'') + '</span></td>'
+                    + '<td>' + esc(d.fileSize||'') + '</td>'
+                    + '<td>' + esc(formattedDate) + '</td>'
+                    + '<td><a class="download-btn" href="' + escAttr(d.fileUrl||'#') + '" target="_blank"><i class="fas fa-download me-1"></i>Download</a></td>'
+                    + '</tr>';
+            }).join('');
+            
+            // Update pagination info and controls
+            updatePaginationInfo(startIndex + 1, endIndex, totalItems);
+            updatePagination(totalPages);
+        };
+
+        // Update pagination info text
+        function updatePaginationInfo(start, end, total) {
+            var paginationInfo = document.getElementById('paginationInfo');
+            if (paginationInfo) {
+                if (total === 0) {
+                    paginationInfo.textContent = 'Showing 0 to 0 of 0 entries';
+                } else {
+                    paginationInfo.textContent = 'Showing ' + start + ' to ' + end + ' of ' + total + ' entries';
+                }
+            }
+        }
+
+        // Update pagination controls
+        function updatePagination(totalPages) {
+            var pagination = document.getElementById('pagination');
+            if (!pagination) return;
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            var paginationHTML = '';
+
+            // Previous button
+            paginationHTML += '<li class="page-item ' + (window.currentPage === 1 ? 'disabled' : '') + '">';
+            paginationHTML += '<a class="page-link" href="#" onclick="goToPage(' + (window.currentPage - 1) + '); return false;">Previous</a>';
+            paginationHTML += '</li>';
+
+            // Page numbers
+            var startPage = Math.max(1, window.currentPage - 2);
+            var endPage = Math.min(totalPages, window.currentPage + 2);
+
+            if (startPage > 1) {
+                paginationHTML += '<li class="page-item"><a class="page-link" href="#" onclick="goToPage(1); return false;">1</a></li>';
+                if (startPage > 2) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+
+            for (var i = startPage; i <= endPage; i++) {
+                paginationHTML += '<li class="page-item ' + (i === window.currentPage ? 'active' : '') + '">';
+                paginationHTML += '<a class="page-link" href="#" onclick="goToPage(' + i + '); return false;">' + i + '</a>';
+                paginationHTML += '</li>';
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+                paginationHTML += '<li class="page-item"><a class="page-link" href="#" onclick="goToPage(' + totalPages + '); return false;">' + totalPages + '</a></li>';
+            }
+
+            // Next button
+            paginationHTML += '<li class="page-item ' + (window.currentPage === totalPages ? 'disabled' : '') + '">';
+            paginationHTML += '<a class="page-link" href="#" onclick="goToPage(' + (window.currentPage + 1) + '); return false;">Next</a>';
+            paginationHTML += '</li>';
+
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // Go to specific page
+        window.goToPage = function(page) {
+            if (page < 1 || !window.filteredDownloads) return;
+            
+            var totalPages = Math.ceil(window.filteredDownloads.length / window.itemsPerPage);
+            if (page > totalPages) return;
+
+            window.currentPage = page;
+            window.displayDocumentsFromAPI(window.filteredDownloads);
+        };
+
+        console.log('Loading API script from:', API);
+        var s = document.createElement('script');
+        s.src = API + '?action=downloads&callback=docsCB';
+        s.onload = function() {
+            console.log('API script loaded successfully');
+        };
+        s.onerror = function() {
+            console.error('Failed to load API script');
+        };
+        document.body.appendChild(s);
+
+        function esc(s){ return String(s).replace(/[&<>"']/g, function(m){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);});}
+        function escAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+    })();
+    </script>
+    <script>
+        (function() {
+            const navToggle = document.querySelector('.new-navbar .nav-toggle');
+            const navMenu = document.getElementById('navMenu');
+            const submenuToggles = document.querySelectorAll('.new-navbar .submenu-toggle');
+            const itemsWithSubmenu = document.querySelectorAll('.new-navbar .has-submenu');
+
+            function closeAllSubmenus(except) {
+                itemsWithSubmenu.forEach(item => {
+                    if (item !== except) item.classList.remove('open');
+                    const btn = item.querySelector('.submenu-toggle');
+                    if (btn && item !== except) btn.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', String(!expanded));
+                    navMenu.classList.toggle('open');
+                    document.body.classList.toggle('nav-open', !expanded);
+                });
+            }
+
+            submenuToggles.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const parent = btn.closest('.has-submenu');
+                    const isOpen = parent.classList.contains('open');
+                    closeAllSubmenus(isOpen ? null : parent);
+                    parent.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.new-navbar')) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            const allLinks = document.querySelectorAll('.new-navbar .nav-link');
+            allLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    allLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

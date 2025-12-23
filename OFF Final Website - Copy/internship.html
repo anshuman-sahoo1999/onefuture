@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Internship Application - One Future Foundation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/official logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/official logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            scroll-padding-top: 200px; /* Account for fixed header when scrolling to anchors */
+        }
+        
+        /* Additional spacing for section headers */
+        section[id] {
+            padding-top: 2.5rem;
+        }
+        
+        .navbar {
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1030 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            transform: none !important;
+            -webkit-transform: none !important;
+            will-change: transform !important;
+            transition: none !important;
+            -webkit-transition: none !important;
+            animation: none !important;
+            -webkit-animation: none !important;
+        }
+        
+        .navbar-nav {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+        }
+        
+        .navbar-collapse {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .nav-item {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            white-space: nowrap !important;
+            margin: 0 0.25rem !important;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #374151 !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            font-size: 0.9rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #1e40af !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Fix for navbar-toggler appearance - Consistent with index.html */
+        .navbar-toggler {
+            border: 1px solid #e5e7eb !important;
+            padding: 0.25rem 0.5rem !important;
+            font-size: 1.25rem !important;
+            line-height: 1 !important;
+            background-color: #f8f9fa !important;
+            border-radius: 0.375rem !important;
+            transition: all 0.15s ease-in-out !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .navbar-toggler:hover {
+            background-color: #e9ecef !important;
+            border-color: #dee2e6 !important;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.25) !important;
+            outline: 0 !important;
+        }
+        
+        .navbar-toggler-icon {
+            display: inline-block !important;
+            width: 1.5em !important;
+            height: 1.5em !important;
+            vertical-align: middle !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: 100% !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2855, 65, 81, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+        
+        .form-container {
+            margin-top: 100px;
+            padding: 40px 0;
+        }
+        
+        /* Internship Information Section Styling */
+        .internship-info-section {
+            margin-top: 60px;
+            padding: 10px 0;
+        }
+        
+        /* Simple Header */
+        .page-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .page-subtitle {
+            color: var(--primary-green);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Text Content */
+        .text-content {
+            padding-right: 15px;
+        }
+        
+        .content-text {
+            color: #374151;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 0.7rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Photo Container */
+        .photo-container {
+            text-align: center;
+            padding-left: 5px;
+        }
+        
+        .internship-photo {
+            max-width: 85%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Apply Button */
+        .apply-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2);
+            margin-top: 0.5rem;
+        }
+        
+        .apply-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(30, 64, 175, 0.3);
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .internship-info-section {
+                margin-top: 50px;
+                padding: 8px 0;
+            }
+            
+            .text-content {
+                padding-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .photo-container {
+                padding-left: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Mobile Responsive Enhancements */
+        @media (max-width: 767.98px) {
+            .internship-info-section {
+                margin-top: 40px;
+                padding: 5px 0;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+                margin-bottom: 0.1rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .content-text {
+                font-size: 0.85rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+            
+            .internship-photo {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            
+            .apply-button {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .form-container {
+                margin-top: 80px;
+                padding: 20px 0;
+            }
+            
+            .form-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+            
+            .form-title {
+                font-size: 1.3rem;
+            }
+            
+            .form-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .form-control, .form-select {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .btn-submit, .btn-cancel {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .d-flex.justify-content-end.gap-3 {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .internship-info-section {
+                margin-top: 35px;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-text {
+                font-size: 0.8rem;
+            }
+            
+            .apply-button {
+                padding: 7px 18px;
+                font-size: 0.85rem;
+            }
+            
+            .form-card {
+                padding: 1rem;
+                margin: 0 10px;
+            }
+            
+            .navbar-brand img {
+                max-height: 50px !important;
+            }
+            
+            .navbar {
+                padding: 0.5rem 0 !important;
+            }
+        }
+        
+        /* Touch-friendly mobile improvements */
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98) !important;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+            }
+            
+            .navbar-nav {
+                flex-direction: column !important;
+                padding: 1rem 0;
+                text-align: center !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0 !important;
+                text-align: center !important;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem !important;
+                padding: 0.4rem 0.5rem !important;
+                text-align: center !important;
+            }
+            
+            .dropdown-menu {
+                font-size: 0.875rem;
+                background-color: rgba(255, 255, 255, 0.98);
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                text-align: center !important;
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .dropdown-item {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                text-align: center !important;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+            }
+        }
+        
+        /* Prevent horizontal scroll on mobile */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Improve form touch targets on mobile */
+        @media (max-width: 767.98px) {
+            .form-control, .form-select {
+                min-height: 44px;
+            }
+            
+            .btn {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            .form-check-input {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .form-check-label {
+                padding-left: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 3rem;
+            border: none;
+        }
+        
+        .form-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+        
+        .btn-cancel {
+            background: #6b7280;
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cancel:hover {
+            background: #4b5563;
+            color: white;
+        }
+        
+        .file-upload-info {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        .text-area-container {
+            position: relative;
+        }
+        
+        .edit-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Circular social media icons for footer */
+        .social-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .social-icon-circle:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .social-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Footer Visitor Counter Styling */
+        .visitor-counter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .counter-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .counter-label {
+            color: #93c5fd;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .counter-number {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+        
+        /* Footer Map Styling */
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .footer-map-container iframe {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-map-container iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animated dropdowns */
+        .dropdown-menu {
+            opacity: 0;
+            transform: scale(0.98);
+            transform-origin: top;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        .show > .dropdown-menu, .dropdown-menu.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Staggered mobile drawer animation */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                transform: translateY(-10px);
+                opacity: 0;
+                transition: transform 0.25s ease, opacity 0.25s ease;
+            }
+            .navbar-collapse.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .navbar-collapse.show .nav-item {
+                animation: fadeSlideIn 0.35s ease both;
+            }
+            .navbar-collapse.show .nav-item:nth-child(1) { animation-delay: 0.02s; }
+            .navbar-collapse.show .nav-item:nth-child(2) { animation-delay: 0.05s; }
+            .navbar-collapse.show .nav-item:nth-child(3) { animation-delay: 0.08s; }
+            .navbar-collapse.show .nav-item:nth-child(4) { animation-delay: 0.11s; }
+            .navbar-collapse.show .nav-item:nth-child(5) { animation-delay: 0.14s; }
+            .navbar-collapse.show .nav-item:nth-child(6) { animation-delay: 0.17s; }
+            .navbar-collapse.show .nav-item:nth-child(7) { animation-delay: 0.20s; }
+            .navbar-collapse.show .nav-item:nth-child(8) { animation-delay: 0.23s; }
+        }
+        
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide old navbar */
+        .navbar { display: none !important; }
+
+        /* New Navbar Styles */
+        .new-navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1040; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e5e7eb; }
+        .new-navbar .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+        .new-navbar .brand img { height: 56px; width: auto; object-fit: contain; }
+        .new-navbar .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+        .new-navbar .nav-toggle .bar { display: block; width: 24px; height: 2px; background: #1f2937; margin: 5px 0; transition: transform 0.2s ease, opacity 0.2s ease; }
+        .new-navbar .nav-menu { display: flex; }
+        .new-navbar .nav-links { display: flex; list-style: none; margin: 0; padding: 0; gap: 8px; align-items: center; }
+        .new-navbar .nav-item { position: relative; }
+        .new-navbar .nav-link, .new-navbar .submenu-toggle { color: #1f2937; text-decoration: none; font-weight: 500; padding: 10px 12px; border-radius: 8px; display: inline-flex; align-items: center; }
+        .new-navbar .nav-link:hover, .new-navbar .submenu-toggle:hover { background: #f3f4f6; }
+        .new-navbar .has-submenu > .submenu-toggle { background: transparent; border: 0; cursor: pointer; }
+        .new-navbar .submenu { position: absolute; top: calc(100% + 8px); left: 0; min-width: 200px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 8px; display: none; opacity: 0; transform: translateY(-6px); transition: opacity 0.18s ease, transform 0.18s ease; }
+        .new-navbar .submenu a { display: block; padding: 8px 10px; color: #374151; border-radius: 6px; text-decoration: none; }
+        .new-navbar .submenu a:hover { background: #f9fafb; color: #1e40af; }
+        .new-navbar .nav-item.open > .submenu { display: block; opacity: 1; transform: translateY(0); }
+        
+        /* Mobile */
+        @media (max-width: 991.98px) {
+            body { padding-top: 96px !important; }
+            .new-navbar .nav-toggle { display: inline-block; }
+            .new-navbar .nav-menu { position: fixed; top: 96px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transform: translateY(-16px); opacity: 0; pointer-events: none; transition: transform 0.25s ease, opacity 0.25s ease; }
+            .new-navbar .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+            .new-navbar .nav-links { flex-direction: column; align-items: stretch; gap: 4px; padding: 10px; }
+            .new-navbar .nav-link, .new-navbar .submenu-toggle { padding: 12px 14px; }
+            .new-navbar .submenu { position: static; border: 0; box-shadow: none; padding: 4px 0 8px; transform: none; opacity: 1; display: none; }
+            .new-navbar .nav-item.open > .submenu { display: block; }
+        }
+        .new-navbar .nav-link.active { background: #e5efff; color: #1e40af; }
+        .nav-open { overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <!-- New Navbar -->
+    <header class="new-navbar" role="banner">
+        <div class="nav-container container">
+            <a class="brand d-flex align-items-center" href="index.html">
+                <img src="./images/official logo.png" alt="One Future Foundation Logo">
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav id="navMenu" class="nav-menu" role="navigation">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
+                        <ul class="submenu">
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#vision">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#approach" class="nav-link">Our Approach</a></li>
+                    <li class="nav-item"><a href="index.html#impact" class="nav-link">Impact Areas</a></li>
+                    <li class="nav-item"><a href="index.html#blueprint" class="nav-link">Blueprint</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Media</button>
+                        <ul class="submenu">
+                            <li><a href="downloads.html">Downloads</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Get Involved</button>
+                        <ul class="submenu">
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="partner.html">Partner</a></li>
+                            <li><a href="internship.html">Internship</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Internship Application Form -->
+    <section class="form-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Internship Information Section -->
+                    <div class="internship-info-section mb-2">
+                        <!-- Simple Header -->
+                        <div class="text-center mb-2">
+                            <h1 class="page-title">Boost Your Passion with One Future Foundation</h1>
+                            <p class="page-subtitle">Internship Opportunities</p>
+                        </div>
+                        
+                        <!-- Simple Two-Column Layout -->
+                        <div class="row align-items-start">
+                            <!-- Left Side - Text Content -->
+                            <div class="col-lg-6">
+                                <div class="text-content">
+                                    <p class="content-text">
+                                        Internship with One Future Foundation offers aspiring professionals and students a dynamic, collaborative work culture with opportunities for learning and growth. We need people to help with events, community programs, content writing, fundraising, and other activities.
+                                    </p>
+                                    <p class="content-text">
+                                        Performance is evaluated upon completion, and successful interns may be considered for available vacancies. 
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Side - Photo -->
+                            <div class="col-lg-6">
+                                <div class="photo-container">
+                                    <img src="./images/intern_form.png" alt="Internship Innovation" class="internship-photo">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Centered Button -->
+                        <div class="text-center mt-2">
+                            <button id="showInternshipForm" class="apply-button" type="button">
+                                <i class="fas fa-graduation-cap me-2"></i>
+                                APPLY FOR INTERNSHIP
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Internship Form Section (Initially Hidden) -->
+                    <div id="internshipFormSection" class="form-card" style="display: none;">
+                        <div class="text-center mb-4">
+                            <h2 class="form-title">Internship Application Form</h2>
+                            <p class="form-subtitle">Tell us about yourself and how you'd like to contribute</p>
+                            <button id="backToInfo" class="btn btn-outline-secondary btn-sm mt-2">
+                                <i class="fas fa-arrow-left me-1"></i>Back to Information
+                            </button>
+                        </div>
+                        
+                        <form id="internshipForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dateOfBirth" class="form-label">Date of Birth *</label>
+                                    <input type="date" class="form-control" id="dateOfBirth" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="location" class="form-label">Location/Country *</label>
+                                    <input type="text" class="form-control" id="location" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="institute" class="form-label">Name of the Institute/University *</label>
+                                    <input type="text" class="form-control" id="institute" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="degree" class="form-label">Degree with Subject Specialization *</label>
+                                    <input type="text" class="form-control" id="degree" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="academicYear" class="form-label">Academic Year *</label>
+                                <input type="text" class="form-control" id="academicYear" placeholder="e.g., 2023-2024" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="cv" class="form-label">Upload CV/Resume</label>
+                                <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
+                                <div class="file-upload-info">Accepted formats: PDF, DOC, DOCX (Max size: 5MB)</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="letterOfRecommendation" class="form-label">Upload Letter of Recommendation from your University/ Institution *</label>
+                                <input type="file" class="form-control" id="letterOfRecommendation" accept=".pdf" required>
+                                <div class="file-upload-info">Accepted format: PDF (Max size: 5MB)</div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="consent" required>
+                                    <label class="form-check-label" for="consent">
+                                        I agree to the Terms & Conditions and Privacy Policy *
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end gap-3">
+                                <button type="button" class="btn btn-cancel">Cancel</button>
+                                <button type="submit" class="btn btn-submit">
+                                    <i class="fas fa-paper-plane me-2"></i>Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">One Future Foundation</h3>
+                                            <p class="mb-3">Empowering communities through innovative approaches in climate action, clean energy, WASH & sustainable development for a brighter tomorrow.</p>
+                    <div class="visitor-counter-section">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Website Visitors</h4>
+                        <div class="counter-display">
+                            <span class="counter-label">Total Visitors:</span>
+                            <span id="visitorCount" class="counter-number">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html#home" class="text-white hover:text-blue-200">Home</a></li>
+                        <li class="mb-2"><a href="index.html#about" class="text-white hover:text-blue-200">About Us</a></li>
+                        <li class="mb-2"><a href="index.html#impact" class="text-white hover:text-blue-200">Impact Areas</a></li>
+                        <li class="mb-2"><a href="index.html#blueprint" class="text-white hover:text-blue-200">Blueprint</a></li>
+                                                    <li class="mb-2"><a href="volunteer.html" class="text-white hover:text-blue-200">Get Involved</a></li>
+                        <li><a href="index.html#footer" class="text-white hover:text-blue-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Google Map Location - Middle Column -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-lg font-semibold mb-3 text-white">Our Location</h4>
+                    <div class="footer-map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.820145165585!2d85.80516117341034!3d20.349047410780475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1908e025984c55%3A0xee1fcd1f11e55141!2sDLF%20Cyber%20City!5e0!3m2!1sen!2sin!4v1754549308918!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="One Future Foundation - DLF Cybercity, Bhubaneswar">
+                        </iframe>
+                    </div>
+                    <p class="text-blue-200 text-sm mt-2">DLF Cybercity, Bhubaneswar, Odisha</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-xl font-semibold mb-3">Contact Information</h3>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Address</h4>
+                                <p class="text-blue-200 text-sm">DCB 118, 1st Floor, DLF Cybercity<br>Patia, Bhubaneswar 751024<br>Odisha, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Email</h4>
+                                <p class="text-blue-200 text-sm">info@onefuture.in</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mb-2 text-white">Connect With Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-blue-700">
+            
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-grow-1">
+                    <p class="mb-0">
+                        <i class="far fa-copyright me-1"></i> 2025. One Future Foundation. All Rights Reserved.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white hover:text-blue-200 me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-blue-200" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top btn btn-primary rounded-circle p-3 position-fixed bottom-3 end-3 d-flex align-items-center justify-content-center bg-blue-700 hover:bg-blue-800 border-0" style="display: none;">
+        <i class="fas fa-arrow-up text-white"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+ 
+        // Function to calculate internship duration
+        function calculateDuration() {
+            const fromDate = document.getElementById('internshipFrom').value;
+            const toDate = document.getElementById('internshipTo').value;
+            const totalDurationField = document.getElementById('totalDuration');
+            
+            if (fromDate && toDate) {
+                const startDate = new Date(fromDate);
+                const endDate = new Date(toDate);
+                
+                if (endDate > startDate) {
+                    const timeDiff = endDate.getTime() - startDate.getTime();
+                    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    
+                    if (daysDiff === 1) {
+                        totalDurationField.value = '1 day';
+                    } else if (daysDiff < 7) {
+                        totalDurationField.value = `${daysDiff} days`;
+                    } else if (daysDiff < 30) {
+                        const weeks = Math.ceil(daysDiff / 7);
+                        totalDurationField.value = `${weeks} week${weeks > 1 ? 's' : ''}`;
+                    } else {
+                        const months = Math.ceil(daysDiff / 30);
+                        totalDurationField.value = `${months} month${months > 1 ? 's' : ''}`;
+                    }
+                } else {
+                    totalDurationField.value = 'Invalid date range';
+                }
+            } else {
+                totalDurationField.value = '';
+            }
+        }
+
+        // Add event listeners for date inputs
+        const fromEl = document.getElementById('internshipFrom');
+        const toEl = document.getElementById('internshipTo');
+        if (fromEl) fromEl.addEventListener('change', calculateDuration);
+        if (toEl) toEl.addEventListener('change', calculateDuration);
+        
+        // Cancel button functionality
+        const cancelBtn = document.querySelector('.btn-cancel');
+        if (cancelBtn) cancelBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to cancel? All entered data will be lost.')) {
+                document.getElementById('internshipForm').reset();
+                document.getElementById('totalDuration').value = '';
+            }
+        });
+
+        // Back to top functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Visitor Counter Function
+        function updateVisitorCount() {
+            // Get current count from localStorage
+            let count = localStorage.getItem('visitorCount');
+            
+            if (count === null) {
+                // First time visit, start from 3594
+                count = 3594;
+            } else {
+                // Increment existing count
+                count = parseInt(count) + 1;
+            }
+            
+            // Store updated count
+            localStorage.setItem('visitorCount', count);
+            
+            // Display count
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.textContent = count;
+            }
+        }
+        
+        // Initialize visitor counter
+        updateVisitorCount();
+        
+        // Show internship form when button is clicked
+        const showBtn = document.getElementById('showInternshipForm');
+        const formSection = document.getElementById('internshipFormSection');
+        if (showBtn && formSection) showBtn.addEventListener('click', function() {
+            formSection.style.display = 'block';
+            formSection.classList.remove('d-none');
+            showBtn.style.display = 'none';
+            
+            // Smooth scroll to the form
+            formSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+        
+        // Back to info functionality
+        const backBtn = document.getElementById('backToInfo');
+        if (backBtn && showBtn && formSection) backBtn.addEventListener('click', function() {
+            formSection.style.display = 'none';
+            formSection.classList.add('d-none');
+            showBtn.style.display = 'inline-block';
+            
+            // Smooth scroll back to the info section
+            document.querySelector('.internship-info-section').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+        
+        // Auto-collapse mobile menu when navigation links are clicked
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .dropdown-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 991.98) {
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+        });
+    </script>
+    <script>
+        (function() {
+            const navToggle = document.querySelector('.new-navbar .nav-toggle');
+            const navMenu = document.getElementById('navMenu');
+            const submenuToggles = document.querySelectorAll('.new-navbar .submenu-toggle');
+            const itemsWithSubmenu = document.querySelectorAll('.new-navbar .has-submenu');
+
+            function closeAllSubmenus(except) {
+                itemsWithSubmenu.forEach(item => {
+                    if (item !== except) item.classList.remove('open');
+                    const btn = item.querySelector('.submenu-toggle');
+                    if (btn && item !== except) btn.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', String(!expanded));
+                    navMenu.classList.toggle('open');
+                    document.body.classList.toggle('nav-open', !expanded);
+                });
+            }
+
+            submenuToggles.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const parent = btn.closest('.has-submenu');
+                    const isOpen = parent.classList.contains('open');
+                    closeAllSubmenus(isOpen ? null : parent);
+                    parent.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.new-navbar')) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            const allLinks = document.querySelectorAll('.new-navbar .nav-link');
+            allLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    allLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                }
+            });
+        })();
+    </script>
+    <script>
+        // ==== Internship form → Google Apps Script (configure your Web App URL) ====
+        (function() {
+            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmLNVYqjUS7po6igC34kIWtsVAcXHRYMN7nUxWZCb2KCsoZ9Gv1dVwPWvUb99lmGIxfw/exec'; // TODO: replace
+
+            function fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            function getVal(id) {
+                const el = document.getElementById(id);
+                return el && typeof el.value !== 'undefined' ? el.value : '';
+            }
+
+            async function buildAttachment(inputEl, acceptExts, maxMB) {
+                const file = inputEl && inputEl.files && inputEl.files[0];
+                if (!file) return null;
+                const ext = (file.name.split('.').pop() || '').toLowerCase();
+                if (acceptExts.length && !acceptExts.includes(ext)) {
+                    alert('Invalid file type: ' + file.name);
+                    return null;
+                }
+                const maxBytes = maxMB * 1024 * 1024;
+                if (file.size > maxBytes) {
+                    alert('File too large: ' + file.name + ' (max ' + maxMB + ' MB)');
+                    return null;
+                }
+                const base64 = await fileToBase64(file);
+                return { filename: file.name, mimeType: file.type || 'application/octet-stream', base64: base64 };
+            }
+
+            const form = document.getElementById('internshipForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('.btn-submit');
+                submitBtn && (submitBtn.disabled = true);
+                try {
+                    const payload = {
+                        formName: 'Internship',
+                        firstName: getVal('firstName'),
+                        lastName: getVal('lastName'),
+                        email: getVal('email'),
+                        phone: getVal('phone'),
+                        dateOfBirth: getVal('dateOfBirth'),
+                        location: getVal('location'),
+                        institute: getVal('institute'),
+                        degree: getVal('degree'),
+                        academicYear: getVal('academicYear'),
+                        internshipFrom: getVal('internshipFrom'),
+                        internshipTo: getVal('internshipTo'),
+                        totalDuration: getVal('totalDuration')
+                    };
+
+                    const attachments = [];
+                    const cv = await buildAttachment(document.getElementById('cv'), ['pdf','doc','docx'], 5);
+                    if (cv) attachments.push(cv);
+                    const lor = await buildAttachment(document.getElementById('letterOfRecommendation'), ['pdf'], 5);
+                    if (!lor) { submitBtn && (submitBtn.disabled = false); return; }
+                    attachments.push(lor);
+                    if (attachments.length) payload.attachments = attachments;
+
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    });
+                    alert('Thank you! Your internship application has been sent.');
+                    form.reset();
+                } catch (err) {
+                    alert('Sorry, there was a problem sending your submission.');
+                } finally {
+                    submitBtn && (submitBtn.disabled = false);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

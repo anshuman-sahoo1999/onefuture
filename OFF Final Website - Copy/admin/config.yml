@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# Uncomment below to enable local development
+# local_backend: true
+
+media_folder: "images/cms" # Media files will be stored in the repo under images/cms
+public_folder: "/images/cms" # The src attribute for uploaded media will begin with /images/cms
+
+collections:
+  # Advisors Collection
+  - name: "advisors"
+    label: "Advisors"
+    folder: "content/advisors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Photo", name: "photo", widget: "image"}
+      - {label: "Biography", name: "biography", widget: "markdown"}
+      - {label: "Display Order", name: "order", widget: "number", default: 1}
+      - {label: "Active", name: "active", widget: "boolean", default: true}
+
+  # Gallery Collection
+  - name: "gallery"
+    label: "Gallery"
+    folder: "content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Caption", name: "caption", widget: "text", required: false}
+      - {label: "Category", name: "category", widget: "select", options: ["Events", "Projects", "Team", "Community", "Infrastructure", "Other"]}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+
+  # Downloads Collection
+  - name: "downloads"
+    label: "Downloads"
+    folder: "content/downloads"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "File", name: "file", widget: "file"}
+      - {label: "Category", name: "category", widget: "select", options: ["Annual Reports", "Brochures", "Forms", "Policies", "Publications", "Other"]}
+      - {label: "Upload Date", name: "date", widget: "datetime"}
+      - {label: "File Size", name: "fileSize", widget: "string", required: false, hint: "e.g., 2.5 MB"}
+
+  # Site Settings (Single File)
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Contact & Social"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - {label: "Contact Email", name: "email", widget: "string"}
+          - {label: "Contact Phone", name: "phone", widget: "string", required: false}
+          - {label: "Address Line 1", name: "address1", widget: "string"}
+          - {label: "Address Line 2", name: "address2", widget: "string"}
+          - {label: "City", name: "city", widget: "string"}
+          - {label: "State", name: "state", widget: "string"}
+          - {label: "Postal Code", name: "postalCode", widget: "string"}
+          - label: "Social Media Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Twitter/X", name: "twitter", widget: "string", required: false}
+              - {label: "YouTube", name: "youtube", widget: "string", required: false}
+          - {label: "Footer Text", name: "footerText", widget: "text"}

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Advisors - One Future Foundation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/official logo.png">
+    <link rel="shortcut icon" href="images/official logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            scroll-padding-top: 200px;
+        }
+
+        /* New Navbar Styles */
+        .new-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .new-navbar .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .new-navbar .brand img {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .new-navbar .nav-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .new-navbar .nav-toggle .bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1f2937;
+            margin: 5px 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .new-navbar .nav-menu {
+            display: flex;
+        }
+
+        .new-navbar .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .new-navbar .nav-item {
+            position: relative;
+        }
+
+        .new-navbar .nav-link,
+        .new-navbar .submenu-toggle {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 12px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .new-navbar .nav-link:hover,
+        .new-navbar .submenu-toggle:hover {
+            background: #f3f4f6;
+        }
+
+        .new-navbar .has-submenu>.submenu-toggle {
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .new-navbar .submenu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 200px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 8px;
+            display: none;
+            opacity: 0;
+            transform: translateY(-6px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+
+        .new-navbar .submenu a {
+            display: block;
+            padding: 8px 10px;
+            color: #374151;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .new-navbar .submenu a:hover {
+            background: #f9fafb;
+            color: #1e40af;
+        }
+
+        .new-navbar .nav-item.open>.submenu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 991.98px) {
+            body {
+                padding-top: 96px !important;
+            }
+
+            .new-navbar .nav-toggle {
+                display: inline-block;
+            }
+
+            .new-navbar .nav-menu {
+                position: fixed;
+                top: 96px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                border-bottom: 1px solid #e5e7eb;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+                transform: translateY(-16px);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.25s ease, opacity 0.25s ease;
+            }
+
+            .new-navbar .nav-menu.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .new-navbar .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+                padding: 10px;
+            }
+
+            .new-navbar .nav-link,
+            .new-navbar .submenu-toggle {
+                padding: 12px 14px;
+            }
+
+            .new-navbar .submenu {
+                position: static;
+                border: 0;
+                box-shadow: none;
+                padding: 4px 0 8px;
+                transform: none;
+                opacity: 1;
+                display: none;
+            }
+
+            .new-navbar .nav-item.open>.submenu {
+                display: block;
+            }
+        }
+
+        .new-navbar .nav-link.active {
+            background: #e5efff;
+            color: #1e40af;
+        }
+
+        .nav-open {
+            overflow: hidden;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 120px 0 60px;
+            margin-top: 76px;
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Advisors Section */
+        .advisors-section {
+            padding: 60px 0;
+        }
+
+        /* Advisor Card Styles */
+        .advisor-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .advisor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .advisor-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+        }
+
+        .advisor-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transition: transform 0.4s ease;
+        }
+
+        .advisor-card:hover .advisor-image-container img {
+            transform: scale(1.05);
+        }
+
+        .advisor-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem 1.5rem 1rem;
+            color: white;
+        }
+
+        .advisor-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .advisor-title {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .advisor-card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .view-bio-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-bio-btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .click-hint {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .advisor-card:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .bio-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #374151;
+            text-align: justify;
+        }
+
+        /* Footer Styles */
+        .social-icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            color: #3b82f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .social-icon-circle:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .social-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .visitor-counter-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .counter-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .counter-label {
+            color: #93c5fd;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .counter-number {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+        }
+
+        .footer-map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .footer-map-container iframe {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .footer-map-container iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .advisor-image-container {
+                height: 320px;
+            }
+
+            .advisor-image-container img {
+                object-position: center 15%;
+            }
+
+            .advisor-name {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- New Navbar -->
+    <header class="new-navbar" role="banner">
+        <div class="nav-container container">
+            <a class="brand d-flex align-items-center" href="index.html">
+                <img src="./images/official logo.png" alt="One Future Foundation Logo">
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav id="navMenu" class="nav-menu" role="navigation">
+                <ul class="nav-links">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
+                        <ul class="submenu">
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#vision">Vision & Mission</a></li>
+                            <li><a href="advisors.html">Our Advisors</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#approach" class="nav-link">Our Approach</a></li>
+                    <li class="nav-item"><a href="index.html#impact" class="nav-link">Impact Areas</a></li>
+                    <li class="nav-item"><a href="index.html#blueprint" class="nav-link">Blueprint</a></li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Media</button>
+                        <ul class="submenu">
+                            <li><a href="downloads.html">Downloads</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-submenu">
+                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Get Involved</button>
+                        <ul class="submenu">
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="partner.html">Partner</a></li>
+                            <li><a href="internship.html">Internship</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Advisors</h1>
+            <p>Distinguished leaders guiding our vision for sustainable development</p>
+        </div>
+    </section>
+
+    <!-- Advisors Section -->
+    <section class="advisors-section">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <!-- Advisor 1: Guruprasad Mishra -->
+                <div class="col-lg-5 col-md-6">
+                    <div class="advisor-card" data-bs-toggle="modal" data-bs-target="#advisorModal1">
+                        <span class="click-hint">Click to view bio</span>
+                        <div class="advisor-image-container">
+                            <img src="./images/advisors/gp_mishra.jpeg" alt="Shri Guru Prasad Mishra">
+                            <div class="advisor-overlay">
+                                <h3 class="advisor-name">Shri Guru Prasad Mishra</h3>
+                                <p class="advisor-title">Former IAS Officer | Development Expert</p>
+                            </div>
+                        </div>
+                        <div class="advisor-card-body">
+                            <button class="view-bio-btn">
+                                <i class="fas fa-book-open"></i>
+                                View Biography
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advisor 2: Ashok Basa -->
+                <div class="col-lg-5 col-md-6">
+                    <div class="advisor-card" data-bs-toggle="modal" data-bs-target="#advisorModal2">
+                        <span class="click-hint">Click to view bio</span>
+                        <div class="advisor-image-container">
+                            <img src="./images/advisors/ashok_basa.jpeg" alt="Er. Ashok Basa">
+                            <div class="advisor-overlay">
+                                <h3 class="advisor-name">Er. Ashok Basa</h3>
+                                <p class="advisor-title">Distinguished Structural Engineer | Global Leader</p>
+                            </div>
+                        </div>
+                        <div class="advisor-card-body">
+                            <button class="view-bio-btn">
+                                <i class="fas fa-book-open"></i>
+                                View Biography
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisor Modal 1: Guruprasad Mishra -->
+    <div class="modal fade" id="advisorModal1" tabindex="-1" aria-labelledby="advisorModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="advisorModal1Label">
+                        <i class="fas fa-user-tie me-2"></i>Shri Guru Prasad Mishra
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="bio-text">
+                        Shri Guru Prasad Mishra, who joined the Odisha Administrative Service in 1979 and was promoted
+                        to the Indian Administrative Service in 1991 for his exemplary work, is widely respected for his
+                        integrity, empathy, and people-centric governance. His early postings in tribal regions,
+                        including roles in Sundargarh as Project Administrator and ADM (Welfare), saw him champion
+                        inclusive development and pioneer participatory forest protection through the creation of Bana
+                        Suraksha Samitis.
+                    </p>
+                    <p class="bio-text">
+                        As Officer on Special Duty to the Chief Secretary, Odisha, he coordinated files across 32
+                        departments, gaining comprehensive insight into statewide governance and policy frameworks.
+                        Later, as Collector of Jharsuguda, he provided visionary leadership during a period of rapid
+                        industrial growth, balancing economic expansion with welfare and infrastructure development.
+                    </p>
+                    <p class="bio-text">
+                        Across decades of service, Shri Mishra has been recognized for his strategic clarity, community
+                        empowerment initiatives, and unwavering dedication to the holistic development of Odisha.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advisor Modal 2: Ashok Basa -->
+    <div class="modal fade" id="advisorModal2" tabindex="-1" aria-labelledby="advisorModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="advisorModal2Label">
+                        <i class="fas fa-user-tie me-2"></i>Er. Ashok Basa
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="bio-text">
+                        Er. Ashok Basa, a distinguished structural engineer and topper in Civil Engineering from NIT
+                        Rourkela (1980), is renowned for his expertise in bridges, hydraulic structures, and
+                        rehabilitation of heritage infrastructure. His contributions include landmark projects such as
+                        the 2000m PSC bridge across the Mahanadi at Jobra, the 1800m RCC flyover in Cuttack, and the
+                        rehabilitation of the historic Brahmani railway bridge at Jenapur.
+                    </p>
+                    <p class="bio-text">
+                        Recognized with prestigious honors including the Distinguished Alumnus Award (2024) from NIT
+                        Rourkela, the S.B. Joshi Memorial Award (2014), and multiple Indian Roads Congress medals, he
+                        has also co-edited a seminal book on structural rehabilitation. A member of apex national
+                        committees on Bridges Specifications & Standards and the National Building Code, he has served
+                        as President of the Institution of Engineers (India) and currently holds global leadership
+                        roles, including Executive Vice President of the World Federation of Engineering Organisations
+                        (WFEO) and Chair of its Strategic Planning Committee.
+                    </p>
+                    <p class="bio-text">
+                        Widely invited as a speaker across continents and serving on conservation committees for the
+                        Jagannath Temple, Puri, Sun Temple, Konark, and Ratna Bhandar, Mr. Basa exemplifies professional
+                        excellence and continues to contribute actively to engineering advancement both nationally and
+                        internationally.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">One Future Foundation</h3>
+                    <p class="mb-3">Empowering communities through innovative approaches in climate action, clean
+                        energy, WASH & sustainable development for a brighter tomorrow.</p>
+                    <div class="visitor-counter-section">
+                        <h4 class="text-lg font-semibold mb-2 text-white">Website Visitors</h4>
+                        <div class="counter-display">
+                            <span class="counter-label">Total Visitors:</span>
+                            <span id="visitorCount" class="counter-number">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html#home" class="text-white hover:text-blue-200">Home</a></li>
+                        <li class="mb-2"><a href="index.html#about" class="text-white hover:text-blue-200">About Us</a>
+                        </li>
+                        <li class="mb-2"><a href="index.html#impact" class="text-white hover:text-blue-200">Impact
+                                Areas</a></li>
+                        <li class="mb-2"><a href="index.html#blueprint"
+                                class="text-white hover:text-blue-200">Blueprint</a></li>
+                        <li class="mb-2"><a href="volunteer.html" class="text-white hover:text-blue-200">Get
+                                Involved</a></li>
+                        <li><a href="index.html#footer" class="text-white hover:text-blue-200">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Google Map Location -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-lg font-semibold mb-3 text-white">Our Location</h4>
+                    <div class="footer-map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.820145165585!2d85.80516117341034!3d20.349047410780475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1908e025984c55%3A0xee1fcd1f11e55141!2sDLF%20Cyber%20City!5e0!3m2!1sen!2sin!4v1754549308918!5m2!1sen!2sin"
+                            width="100%" height="200" style="border:0; border-radius: 8px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="One Future Foundation - DLF Cybercity, Bhubaneswar">
+                        </iframe>
+                    </div>
+                    <p class="text-blue-200 text-sm mt-2">DLF Cybercity, Bhubaneswar, Odisha</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-lg font-semibold mb-2 text-white">Contact Information</h3>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Address</h4>
+                                <p class="text-blue-200 text-sm">DCB 118, 1st Floor, DLF Cybercity<br>Patia, Bhubaneswar
+                                    751024<br>Odisha, India</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Email</h4>
+                                <p class="text-blue-200 text-sm">info@onefuture.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-2 text-white">Connect With Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter-x"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon-circle">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 border-blue-700">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-grow-1">
+                    <p class="mb-0">
+                        <i class="far fa-copyright me-1"></i> 2025. One Future Foundation. All Rights Reserved.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white hover:text-blue-200 me-3" data-bs-toggle="modal"
+                            data-bs-target="#privacyModal">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-blue-200" data-bs-toggle="modal"
+                            data-bs-target="#termsModal">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#"
+        class="back-to-top btn btn-primary rounded-circle p-3 position-fixed bottom-3 end-3 d-flex align-items-center justify-content-center bg-blue-700 hover:bg-blue-800 border-0"
+        style="display: none;">
+        <i class="fas fa-arrow-up text-white"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        // Back to top functionality
+        window.addEventListener('scroll', function () {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Visitor Counter Function
+        function updateVisitorCount() {
+            let count = localStorage.getItem('visitorCount');
+
+            if (count === null) {
+                count = 3594;
+            } else {
+                count = parseInt(count) + 1;
+            }
+
+            localStorage.setItem('visitorCount', count);
+
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.textContent = count;
+            }
+        }
+
+        // Initialize visitor counter
+        updateVisitorCount();
+    </script>
+
+    <script>
+        (function () {
+            const navToggle = document.querySelector('.new-navbar .nav-toggle');
+            const navMenu = document.getElementById('navMenu');
+            const submenuToggles = document.querySelectorAll('.new-navbar .submenu-toggle');
+            const itemsWithSubmenu = document.querySelectorAll('.new-navbar .has-submenu');
+
+            function closeAllSubmenus(except) {
+                itemsWithSubmenu.forEach(item => {
+                    if (item !== except) item.classList.remove('open');
+                    const btn = item.querySelector('.submenu-toggle');
+                    if (btn && item !== except) btn.setAttribute('aria-expanded', 'false');
+                });
+            }
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', String(!expanded));
+                    navMenu.classList.toggle('open');
+                    document.body.classList.toggle('nav-open', !expanded);
+                });
+            }
+
+            submenuToggles.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const parent = btn.closest('.has-submenu');
+                    const isOpen = parent.classList.contains('open');
+                    closeAllSubmenus(isOpen ? null : parent);
+                    parent.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(!isOpen));
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.new-navbar')) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                    closeAllSubmenus(null);
+                }
+            });
+
+            const allLinks = document.querySelectorAll('.new-navbar .nav-link');
+            allLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    allLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992) {
+                    navMenu && navMenu.classList.remove('open');
+                    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('nav-open');
+                }
+            });
+        })();
+    </script>
+
+    <!-- Netlify Identity Redirect Handling -->
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
