@@ -10,7 +10,7 @@ collections:
   # Advisors Collection
   - name: "advisors"
     label: "Advisors"
-    folder: "content/advisors"
+    folder: "OFF Final Website - Copy/content/advisors"
     create: true
     slug: "{{slug}}"
     fields:
@@ -24,7 +24,7 @@ collections:
   # Gallery Collection
   - name: "gallery"
     label: "Gallery"
-    folder: "content/gallery"
+    folder: "OFF Final Website - Copy/content/gallery"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -38,7 +38,7 @@ collections:
   # Downloads Collection
   - name: "downloads"
     label: "Downloads"
-    folder: "content/downloads"
+    folder: "OFF Final Website - Copy/content/downloads"
     create: true
     slug: "{{slug}}"
     fields:
@@ -55,7 +55,7 @@ collections:
     files:
       - label: "Contact & Social"
         name: "contact"
-        file: "content/settings/contact.json"
+        file: "OFF Final Website - Copy/content/settings/contact.json"
         fields:
           - {label: "Contact Email", name: "email", widget: "string"}
           - {label: "Contact Phone", name: "phone", widget: "string", required: false}
@@ -74,6 +74,3 @@ collections:
               - {label: "Twitter/X", name: "twitter", widget: "string", required: false}
               - {label: "YouTube", name: "youtube", widget: "string", required: false}
           - {label: "Footer Text", name: "footerText", widget: "text"}
-
-
-
