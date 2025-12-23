@@ -2,8 +2,6 @@ backend:
   name: github
   repo: anshuman-sahoo1999/onefuture
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
 media_folder: "OFF Final Website - Copy/images/cms"
 public_folder: "/images/cms"
@@ -76,5 +74,6 @@ collections:
               - {label: "Twitter/X", name: "twitter", widget: "string", required: false}
               - {label: "YouTube", name: "youtube", widget: "string", required: false}
           - {label: "Footer Text", name: "footerText", widget: "text"}
+
 
 
