@@ -21,7 +21,7 @@
 
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
+    
     <style>
         :root {
             --primary-blue: #1e40af;
@@ -1806,6 +1806,81 @@
         .nav-open {
             overflow: hidden;
         }
+
+        /* --- NBC 2026 Button Styles --- */
+        .btn-nbc-pulse {
+            background: linear-gradient(45deg, #10b981, #3b82f6) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            border-radius: 50px !important;
+            padding: 8px 20px !important;
+            margin-left: 10px;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .btn-nbc-pulse:hover {
+            background: linear-gradient(45deg, #059669, #2563eb) !important;
+            transform: translateY(-1px);
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        /* --- Marquee Styles --- */
+        .nbc-marquee-container {
+            background: linear-gradient(90deg, #1e40af, #10b981);
+            color: white;
+            width: 100%;
+            padding: 8px 0;
+            position: fixed;
+            top: 76px; /* Adjust based on navbar height */
+            z-index: 1020;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nbc-marquee-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .nbc-marquee-text:hover {
+            color: #fbbf24; /* Amber color on hover */
+            text-decoration: underline;
+        }
+
+        /* Adjust Hero section to account for marquee */
+        .hero-section {
+            padding-top: 120px !important; /* Increased padding */
+        }
+
+        /* Mobile Adjustment for Marquee positioning */
+        @media (max-width: 991.98px) {
+            .nbc-marquee-container {
+                top: 96px; /* Matches mobile navbar height */
+            }
+            .hero-section {
+                padding-top: 140px !important;
+            }
+        }
     </style>
 </head>
 
@@ -1823,41 +1898,56 @@
                 <span class="bar"></span>
             </button>
             <nav id="navMenu" class="nav-menu" role="navigation">
-                <ul class="nav-links">
-                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
-                    <li class="nav-item has-submenu">
-                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
-                        <ul class="submenu">
-                            <li><a href="index.html#about">About Us</a></li>
-                            <li><a href="index.html#vision">Vision & Mission</a></li>
-                            <li><a href="advisors.html">Our Advisors</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="index.html#approach" class="nav-link">Our Approach</a></li>
-                    <li class="nav-item"><a href="index.html#impact" class="nav-link">Impact Areas</a></li>
-                    <li class="nav-item"><a href="index.html#blueprint" class="nav-link">Blueprint</a></li>
-                    <li class="nav-item has-submenu">
-                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Media</button>
-                        <ul class="submenu">
-                            <li><a href="downloads.html">Downloads</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-submenu">
-                        <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Get Involved</button>
-                        <ul class="submenu">
-                            <li><a href="volunteer.html">Volunteer</a></li>
-                            <li><a href="partner.html">Partner</a></li>
-                            <li><a href="internship.html">Internship</a></li>
-                            <li><a href="careers.html">Careers</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="#footer" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+    <ul class="nav-links">
+        <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+        <li class="nav-item has-submenu">
+            <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
+            <ul class="submenu">
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#vision">Vision & Mission</a></li>
+                <li><a href="advisors.html">Our Advisors</a></li>
+            </ul>
+        </li>
+        <li class="nav-item"><a href="index.html#approach" class="nav-link">Our Approach</a></li>
+        <li class="nav-item"><a href="index.html#impact" class="nav-link">Impact Areas</a></li>
+        <li class="nav-item"><a href="index.html#blueprint" class="nav-link">Blueprint</a></li>
+        <li class="nav-item has-submenu">
+            <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Media</button>
+            <ul class="submenu">
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Get Involved</button>
+            <ul class="submenu">
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="partner.html">Partner</a></li>
+                <li><a href="internship.html">Internship</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <a href="https://nbc2026.onefuture.in/" target="_blank" class="nav-link btn-nbc-pulse">
+                <i class="fas fa-external-link-alt me-1"></i> NBC 2026
+            </a>
+        </li>
+        <li class="nav-item"><a href="#footer" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
         </div>
+        <div class="nbc-marquee-container">
+        <div class="container-fluid">
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                <a href="https://nbc2026.onefuture.in/" target="_blank" class="nbc-marquee-text">
+                    <i class="fas fa-bullhorn me-2"></i> Click here to visit the Official website of the National Bamboo Conclave 2026, Bhubaneswar.
+                </a>
+            </marquee>
+        </div>
+    </div>
     </header>
-
+ 
     <!-- Hero Section -->
     <section id="home" class="hero-section position-relative d-flex align-items-center"
         style="height: 100vh; padding-top: 60px;">
@@ -4209,5 +4299,6 @@
         }
     </script>
 </body>
+
 
 </html>
